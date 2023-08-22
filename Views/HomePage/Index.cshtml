@@ -1,0 +1,145 @@
+﻿@using MarketingApp.ViewModel;
+@model MarketingViewModel;
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="main">
+    <nav class="navbar navbar-expand-lg navbar-light bg-gradientclr">
+        <a class="navbar-brand" href="#">
+            <img src="https://cfcdn.apowersoft.info/astro/picwish/_astro/scene-logo-after@530w.df3314dd.png" width="100" height="40" class="d-inline-block align-top ml" alt="">
+        </a>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active text-lg-center mt-2">
+                    <a href="#" class="text-light  p-5 text" id="address">Address</a>
+                </li>
+                <li class="nav-item">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text ml mt-1 btn-lg form-input" id="basic-addon1">All</span>
+                        </div>
+                        <input type="text" class="form-control form-input text-light ml mt-1" placeholder="Search anything..." aria-describedby="basic-addon1">
+                    </div>
+                </li>
+                <li class="nav-item mt-2">
+                    @* <input type="button" id="btn_language" class="btn text-light mt-3" value="Languages" />*@
+                    <a href="#" class="text-light mt-3 p-5 text">Languages</a>
+                </li>
+                <li class="nav-item mt-2">
+                    @*<input type="button" id="btn_userdetails" class="btn text-light mt-3" value="Hello User" />*@
+                    <a href="#" class="text-light mt-3 p-4 text">Hello User</a>
+                </li>
+                <li class="nav-item mt-2">
+                    @*<input type="button" id="btn_returns&orders" class="btn  text-light mt-3" value="Returns & Orders" />*@
+                    <a href="#" class="text-light mt-3 p-3 text">Returns & Orders</a>
+                </li>
+                <li class="nav-item mt-1">
+                    @* <button type="button" id="btn_cart" class="btn text-light bi bi-cart mt-3 img-cart"></button>*@
+                    <a href="#" class="text-light bi bi-cart mt-3 img-cart p-4"></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <h4>shop by category</h4>
+        <a href="#" class="href-mobile" onclick="mobileNav()">Mobiles</a>
+        <a href="#">Computers</a>
+        <a href="#">TV</a>
+
+        <h4>Help & Settings</h4>
+        <a href="#">Contact</a>
+        <a href="#">About</a>
+        <a href="#">Your Account</a>
+        <a href="#">Sign Out</a>
+    </div>
+
+    <div id="mobileSidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeMobileNav()">&times;</a>
+        <h4>Mobiles, Tablets & More</h4>
+        <a href="#">All Mobile Phones</a>
+        <a href="#">Tablets</a>
+        <a href="#">Power Banks</a>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary w-100" style="height:40px;">
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active text-lg-center">
+                    <img src="~/images/icons-menu.gif" class="btn btn-outline-primary mx-auto d-block bg-light ml" alt="Sample photo" onclick="openNav()">
+                </li>
+                <li class="nav-item align-middle">
+                    <input type="button" id="btn_language" class="btn btn-outline-primary text-light" value="Mobiles" />
+                </li>
+                <li class="nav-item align-middle">
+                    <input type="button" id="btn_userdetails" class="btn btn-outline-primary text-light" value="Computers" />
+                </li>
+                <li class="nav-item align-middle">
+                    <input type="button" id="btn_returns&orders" class="btn btn-outline-primary text-light " value="Women" />
+                </li>
+                <li class="nav-item align-middle">
+                    <input type="button" id="btn_returns&orders" class="btn btn-outline-primary text-light" value="Child" />
+                </li>
+            </ul>
+        </div>
+
+    </nav>
+</div>
+
+@*-----Address Model-------*@
+<div class="modal" id="Model" tabindex="-1" role="dialog" aria-labelledby="ModelTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header  bg-gradientclr">
+                <h5 class="modal-title" id="ModelTitle">Choose Your Address</h5>
+            </div>
+            <div class="modal-body">
+                <h6>Select a delivery location to see product availability and delivery options</h6>
+                @Html.TextAreaFor(r=>r.Address.address,new{@class="form-control",@id="txt_address"})
+                <i class="bi bi-house-add-fill w-100"></i>
+               @* <p class="small fw-bold mt-2 pt-1 mb-3 link-primary" id="txt_addaddress">Add an Address or Pickup Point</p>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+    {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(document).on("click", "#address", function () {
+                $(".modal").show();
+            });
+            $(document).on("click", "#txt_addaddress", function () {
+                window.location.href = "@Url.Action("AddAddressForm","HomePage")";
+            });
+        });
+
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+            //document.getElementById("main").style.marginLeft = "250px";
+            document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            //document.getElementById("main").style.marginLeft= "0";
+            document.body.style.backgroundColor = "white";
+        }
+
+        function mobileNav() {
+            document.getElementById("mobileSidenav").style.width = "250px";
+            //document.getElementById("main").style.marginLeft= "0";
+            document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+        }
+        function closeMobileNav() {
+            document.getElementById("mobileSidenav").style.width = "0";
+            //document.getElementById("main").style.marginLeft= "0";
+            document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+        }
+    </script>
+}

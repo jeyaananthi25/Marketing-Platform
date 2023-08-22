@@ -1,0 +1,93 @@
+﻿@using MarketingApp.ViewModel;
+@model MarketingViewModel;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<section class="vh-100">
+    <div class="card my-4 shadow-lg p-4 mb-4 bg-white rounded-6  bg-gradientclr">
+        <div class="container-fluid h-custom my-4 shadow-lg p-4 mb-4 bg-white">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-md-9 col-lg-6 col-xl-5">
+                    <img src="~/images/register-removebg-preview.png" alt="Sample image" />
+                </div>
+                <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                    <form>
+                        <h2 class="text-center mb-5">Create an account</h2>
+                        <div class="mb-2 g-5">
+                            @Html.DisplayNameFor(r=>r.CreateAccount.Username)<span class="text-danger">*</span>
+                            @Html.TextBoxFor(r=>r.CreateAccount.Username,new{@class="form-control text-size txt-box",@id="txt_name",@placeholder="Enter Your Name", })
+                            <span class="text-danger">@Html.ValidationMessageFor(r=>r.CreateAccount.Username)</span>
+                        </div>
+                        <div class="mb-2 g-5">
+                            @Html.DisplayNameFor(r=>r.CreateAccount.Mobile)<span class="text-danger">*</span>
+                            @Html.TextBoxFor(r=>r.CreateAccount.Mobile,new{@class="form-control text-size txt-box",@id="txt_mobile",@placeholder="Enter Your Mobile" })
+                            <span class="text-danger">@Html.ValidationMessageFor(r=>r.CreateAccount.Mobile)</span>
+                        </div>
+                        <div class="mb-2 g-5">
+                            @Html.DisplayNameFor(r=>r.CreateAccount.EmailID)<span class="text-danger">*</span>
+                            @Html.TextBoxFor(r=>r.CreateAccount.EmailID,new{@class="form-control text-size txt-box",@id="txt_emailID",@placeholder="Enter Your Email" })
+                            <span class="text-danger">@Html.ValidationMessageFor(r=>r.CreateAccount.EmailID)</span>
+                        </div>
+                        <div class="mb-2 g-5">
+                            @Html.DisplayNameFor(r=>r.CreateAccount.Password)<span class="text-danger">*</span>
+                            @Html.PasswordFor(r=>r.CreateAccount.Password,new{@class="form-control text-size txt-box",@id="txt_password",@placeholder="Enter Your Password"})
+                            <span class="text-danger">@Html.ValidationMessageFor(r=>r.CreateAccount.Password)</span>
+                        </div>
+                        <div class="mb-5 g-5">
+                            @Html.DisplayNameFor(r=>r.CreateAccount.ConfirmPassword)<span class="text-danger">*</span>
+                            @Html.PasswordFor(r=>r.CreateAccount.ConfirmPassword, new { @class = "form-control text-size txt-box", id="txt_confirmPassword" ,@placeholder="Enter Your ConfirmPassword"})
+                            <span class="text-danger">@Html.ValidationMessageFor(r=>r.CreateAccount.ConfirmPassword)</span>
+                        </div>
+                        <div class="mb-5 text-center">
+                            <button type="button" class="btn btn-primary text-center" id="btn_register"> Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(document).on("click", "#btn_register", function () {
+                if ($("form").valid()) {
+                    var userDetails = $("form").serializeArray();
+                    $.ajax({
+                        url: '@Url.Action("InsertUserDetails")',
+                        datatype: "Json",
+                        data: userDetails,
+                        type: "POST",
+                        success: function (res, status, resobj) {
+                            if (res.status == 'F') {
+                                toastr.warning(res.message);
+                            }
+                            else if (res.status == 'S') {
+                                toastr.success(res.message);
+                                setTimeout(function () { window.location.href = "@Url.Action("UserLogin")"; }, 1200)
+                            }
+                            else {
+                                alert('Sometime went wrong');
+                            }
+                        },
+                        error: function () {
+                            alert('Sometime went wrong');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+}
+
+

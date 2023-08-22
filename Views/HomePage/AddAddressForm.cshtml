@@ -1,0 +1,89 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="main">
+    <nav class="navbar navbar-expand-lg navbar-light bg-gradientclr">
+        <a class="navbar-brand" href="#">
+            <img src="https://cfcdn.apowersoft.info/astro/picwish/_astro/scene-logo-after@530w.df3314dd.png" width="100" height="40" class="d-inline-block align-top ml" alt="">
+        </a>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active text-lg-center mt-2">
+                    <a href="#" class="text-light  p-5 text" id="address">Address</a>
+                </li>
+                <li class="nav-item">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text ml mt-1 btn-lg form-input" id="basic-addon1">All</span>
+                        </div>
+                        <input type="text" class="form-control form-input text-light ml mt-1" placeholder="Search anything..." aria-describedby="basic-addon1">
+                    </div>
+                </li>
+                <li class="nav-item mt-2">
+                    @* <input type="button" id="btn_language" class="btn text-light mt-3" value="Languages" />*@
+                    <a href="#" class="text-light mt-3 p-5 text">Languages</a>
+                </li>
+                <li class="nav-item mt-2">
+                    @*<input type="button" id="btn_userdetails" class="btn text-light mt-3" value="Hello User" />*@
+                    <a href="#" class="text-light mt-3 p-4 text">Hello User</a>
+                </li>
+                <li class="nav-item mt-2">
+                    @*<input type="button" id="btn_returns&orders" class="btn  text-light mt-3" value="Returns & Orders" />*@
+                    <a href="#" class="text-light mt-3 p-3 text">Returns & Orders</a>
+                </li>
+                <li class="nav-item mt-1">
+                    @* <button type="button" id="btn_cart" class="btn text-light bi bi-cart mt-3 img-cart"></button>*@
+                    <a href="#" class="text-light bi bi-cart mt-3 img-cart p-4"></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <h4>shop by category</h4>
+        <a href="#" class="href-mobile" onclick="mobileNav()">Mobiles</a>
+        <a href="#">Computers</a>
+        <a href="#">TV</a>
+
+        <h4>Help & Settings</h4>
+        <a href="#">Contact</a>
+        <a href="#">About</a>
+        <a href="#">Your Account</a>
+        <a href="#">Sign Out</a>
+    </div>
+
+    <div id="mobileSidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeMobileNav()">&times;</a>
+        <h4>Mobiles, Tablets & More</h4>
+        <a href="#">All Mobile Phones</a>
+        <a href="#">Tablets</a>
+        <a href="#">Power Banks</a>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary w-100" style="height:40px;">
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active text-lg-center">
+                    <img src="~/images/icons-menu.gif" class="btn btn-outline-primary mx-auto d-block bg-light ml" alt="Sample photo" onclick="openNav()">
+                </li>
+                <li class="nav-item align-middle">
+                    <input type="button" id="btn_language" class="btn btn-outline-primary text-light" value="Mobiles" />
+                </li>
+                <li class="nav-item align-middle">
+                    <input type="button" id="btn_userdetails" class="btn btn-outline-primary text-light" value="Computers" />
+                </li>
+                <li class="nav-item align-middle">
+                    <input type="button" id="btn_returns&orders" class="btn btn-outline-primary text-light " value="Women" />
+                </li>
+                <li class="nav-item align-middle">
+                    <input type="button" id="btn_returns&orders" class="btn btn-outline-primary text-light" value="Child" />
+                </li>
+            </ul>
+        </div>
+
+    </nav>
+</div>
+@*------------Address Form------------*@

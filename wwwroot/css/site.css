@@ -1,0 +1,147 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    margin: 0;
+    padding: 0;
+}
+
+.img-login {
+    width: 600px;
+    height: 300px;
+}
+
+.img-logo {
+    width: 185px;
+}
+
+.bg-gradientclr {
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(26,213,179,0.9808298319327731) 57%, rgba(8,71,84,1) 100%);
+}
+
+.txt-box {
+    border-radius: 18px;
+    padding: 20px;
+    width: 300px;
+    height: 13px;
+}
+
+.btn-login {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+}
+
+.bg-image {
+    background-image: url('https://static.vecteezy.com/system/resources/previews/001/872/837/original/abstract-dark-blue-geometric-polygonal-form-background-vector.jpg');
+}
+
+.ml {
+    margin-left: 10px;
+}
+
+.img-cart {
+    font-size: 22px;
+    color: rgb(255, 210, 48);
+    opacity: 1;
+    -webkit-text-stroke-width: 0px;
+    text-shadow: rgb(255, 0, 0) 7.9px 3.1px 12px;
+}
+
+.img-gif {
+    width: 30px;
+    height: 30px;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: white;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+    .sidenav a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 15px;
+        color: black;
+        display: block;
+        transition: 0.3s;
+        margin-top: 0;
+    }
+
+        .sidenav a:hover {
+            background-color: #f1f1f1;
+        }
+
+    .sidenav .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
+h4 {
+    font-size: large;
+    padding: 10%;
+}
+
+.text {
+    text-decoration: none;
+}
+
+.form-input {
+    color: black !important;
+    height: 40px;
+}
+.btn3d {
+    transition: all .08s linear;
+    position: relative;
+    outline: medium none;
+    -moz-outline-style: none;
+    border: 0px;
+}
+.btn3d:focus {
+    outline: medium none;
+    -moz-outline-style: none;
+}
+
+.btn3d:active {
+    top: 9px;
+}
+.btn-success {
+    box-shadow: 0 0 0 1px #5cb85c inset, 0 0 0 2px rgba(255,255,255,0.15) inset, 0 8px 0 0 #4cae4c, 0 8px 0 1px rgba(0,0,0,0.4), 0 8px 8px 1px rgba(0,0,0,0.5);
+    background-color: #5cb85c;
+}
+.btn-arrow-right{
+
+}

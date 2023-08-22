@@ -1,0 +1,78 @@
+﻿@using MarketingApp.ViewModel;
+@model MarketingViewModel;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<body class=" my-4 shadow-lg p-4 mb-4 bg-white rounded-6  bg-gradientclr">
+<section class="vh-100 ">
+        <div class="container-fluid h-custom my-4 shadow-lg p-4 mb-4 bg-white rounded-3 w-75 h-75">
+            <div class="row d-flex justify-content-center align-items-center h-100 ">
+                <div class="col-md-9 col-lg-6 col-xl-5">
+                    <img src="https://img.freepik.com/premium-vector/online-shopping-internet-shop-use-smartphone-app_102902-5953.jpg?w=2000" class="img-fluid img-login" alt="Sample image">
+                </div>
+                <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                    <form>
+                        <div class="my-4">
+                            <img src="https://thumbs.dreamstime.com/b/ja-j-letter-logo-design-creative-cut-171194849.jpg" class="img-fluid img-logo text-center" alt="Sample image" />
+                        </div>
+                        <div class="form-outline  mb-3">
+                            @Html.DisplayNameFor(r=>r.CreateAccount.EmailID)
+                            @Html.TextBoxFor(r=>r.CreateAccount.EmailID,new{@class="form-control form-control-lg text-size txt-box ",@id="txt_emailID",@placeholder="Enter Your Email" })
+                            <span class="text-danger">@Html.ValidationMessageFor(r=>r.CreateAccount.EmailID)</span>
+                        </div>
+                        <div class="form-outline mb-3">
+                            @Html.DisplayNameFor(r=>r.CreateAccount.Password)
+                            @Html.PasswordFor(r=>r.CreateAccount.Password,new{@class="form-control form-control-lg text-size txt-box",@id="txt_password",@placeholder="Enter Your Password"})
+                            <span class="text-danger">@Html.ValidationMessageFor(r=>r.CreateAccount.Password)</span>
+                        </div>
+                        <div>
+                            <a href="#!" class="float-start">Forgot password?</a>
+                        </div>
+
+                        <div class="text-center text-lg-end">
+                            <button type="button" class="btn btn-success btn-lg btn3d" id="btn_login"><span class="glyphicon glyphicon-ok"> Login</button>
+                            <p class="small fw-bold mt-2 pt-1 mb-3 text-lg-start"> Don't have an account? <a href="#!" class="link-danger" id="register">Register</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+</section>
+</body>
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#register").click(function () {
+                window.location.href = "@Url.Action("CreateAccount","Login")";
+            });
+            $(document).on("click", "#btn_login", function () {
+                if ($("form").valid()) {
+                    var email = $("#txt_emailID").val();
+                    $.ajax({
+                        url: '@Url.Action("UserLogin","Login")?email=' + email,
+                        datatype: "Json",
+                        type: "POST",
+                        success: function (res, status, resobj) {
+                            if (res.status == 'F') {
+                                toastr.warning(res.message);
+                            }
+                            else if (res.status == 'S') {
+                                toastr.success(res.message);
+                                //window.location.href = "@Url.Action("Password")";
+                                setTimeout(function () { window.location.href = "@Url.Action("Index","HomePage")"; }, 1200)
+                            }
+                            else {
+                                alert('Sometime went wrong');
+                            }
+                        },
+                        error: function () {
+                            alert('Sometime went wrong');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+}
